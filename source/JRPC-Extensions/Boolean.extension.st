@@ -1,6 +1,6 @@
 Extension { #name : #Boolean }
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Boolean >> asJRPCJSON [
 	^ self
 ]

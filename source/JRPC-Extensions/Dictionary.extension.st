@@ -1,6 +1,6 @@
 Extension { #name : #Dictionary }
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Dictionary >> asJRPCJSON [
 	^ (self associations collect: [ :assoc |
 		self assert: assoc key isString.

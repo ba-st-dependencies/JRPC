@@ -1,6 +1,6 @@
 Extension { #name : #Error }
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Error >> asJRPCJSON [
 	^ { 
 		'errorClass' -> self className.
@@ -11,12 +11,12 @@ Error >> asJRPCJSON [
 	} asDictionary
 ]
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Error >> asJRPCResponse [
 	^ self asJRPCResponseWithId: nil
 ]
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Error >> asJRPCResponseWithId: anInteger [
 	| response |
 	response := JRPCErrorResponseObject id: anInteger error: JRPCErrorObject internalError.
