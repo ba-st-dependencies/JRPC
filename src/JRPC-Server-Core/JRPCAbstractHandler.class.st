@@ -43,14 +43,6 @@ JRPCAbstractHandler >> canHandle: aRequestOrNotification [
 		or: [ self isForNotification and: [ aRequestOrNotification isNotification ] ]
 ]
 
-{ #category : #'parameters-checking' }
-JRPCAbstractHandler >> checkParametersForRequest: aJRPCRequestObject [
-	"By default, no check is done.
-	 Subclasses should raise a JRPCInvalidParameters error if the params object of
-	 aJRPCRequestObject is invalid.
-	"
-]
-
 { #category : #accessing }
 JRPCAbstractHandler >> defaultMethodName [
 	^ self class defaultMethodName

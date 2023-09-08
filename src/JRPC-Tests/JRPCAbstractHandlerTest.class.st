@@ -7,91 +7,81 @@ Class {
 	#category : #'JRPC-Tests'
 }
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'foo';
-						yourself.
-						
-	self assert: handler1 equals: handler2
+	handler1 := JRPCBlockHandler methodName: 'foo' block: [  ].
+	handler2 := JRPCBlockHandler methodName: 'foo' block: [  ].
+
+	self
+		assert: handler1 equals: handler2;
+		assert: handler1 hash equals: handler2 hash
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality2 [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'bar';
-						yourself.
-						
+	handler1 := JRPCBlockHandler methodName: 'foo' block: [  ].
+	handler2 := JRPCBlockHandler methodName: 'bar' block: [  ].
+
 	self deny: handler1 equals: handler2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality3 [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForNotification: false;
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'foo';
-						yourself.
-						
+	handler1 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForNotification: false;
+		            yourself.
+	handler2 := JRPCBlockHandler methodName: 'foo' block: [  ].
+
 	self deny: handler1 equals: handler2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality4 [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForNotification: false;
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForNotification: false;
-						yourself.
-						
+	handler1 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForNotification: false;
+		            yourself.
+	handler2 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForNotification: false;
+		            yourself.
+
 	self assert: handler1 equals: handler2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality5 [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForRequest: false;
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'foo';
-						yourself.
-						
+	handler1 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForRequest: false;
+		            yourself.
+	handler2 := JRPCBlockHandler methodName: 'foo' block: [  ].
+
 	self deny: handler1 equals: handler2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testEquality6 [
+
 	| handler1 handler2 |
-	handler1 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForRequest: false;
-						yourself.
-	handler2 := JRPCBlockHandler new
-						methodName: 'foo';
-						isForRequest: false;
-						yourself.
-						
+	handler1 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForRequest: false;
+		            yourself.
+	handler2 := (JRPCBlockHandler methodName: 'foo' block: [  ])
+		            isForRequest: false;
+		            yourself.
+
 	self assert: handler1 equals: handler2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCAbstractHandlerTest >> testIsForRequestAndIsForNotificationSetters [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x | ].

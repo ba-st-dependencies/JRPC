@@ -11,6 +11,12 @@ Class {
 	#category : #'JRPC-Server-Core'
 }
 
+{ #category : #testing }
+JRPCPragmaHandler class >> isAbstract [
+
+	^ self = JRPCPragmaHandler
+]
+
 { #category : #private }
 JRPCPragmaHandler >> getMethodSelectorFromPragma [
 	"Returns the selector corresponding to the method to execute as behaviour of the handler.

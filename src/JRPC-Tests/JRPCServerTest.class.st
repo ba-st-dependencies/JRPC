@@ -66,6 +66,34 @@ JRPCServerTest >> testAddHandlerNamedBlock [
 	self shouldnt: [ self messageProcessor handlersDetect: [ :h | h methodName = 'test' ] ] raise: NotFound.
 ]
 
+{ #category : #tests }
+JRPCServerTest >> testAddHandlerNamedWithArgumentsBlock [
+
+	| block request response |
+	self assert: self messageProcessor handlersCount equals: 1.
+	block := [ :x :y | x + y ].
+	server
+		addHandlerNamed: 'sum'
+		withArgumentsNamed: #( x y )
+		evaluating: block.
+
+	request := JRPCRequestObject id: 1 method: 'sum' params: #( 3 4 ).
+	response := server handleJRPCRequestObject: request.
+
+	self
+		deny: response isError;
+		assert: response result equals: 7.
+
+	request := JRPCRequestObject id: 1 method: 'sum' params: {
+			           #y -> 4.
+			           #x -> 3 } asDictionary.
+	response := server handleJRPCRequestObject: request.
+
+	self
+		deny: response isError;
+		assert: response result equals: 7
+]
+
 { #category : #test }
 JRPCServerTest >> testAddHandlersFromPragmasIn [
 
