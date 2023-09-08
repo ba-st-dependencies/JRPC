@@ -6,6 +6,8 @@ RwSimpleProjectLoadComponentV2 {
   #componentNames : [	],
   #packageNames : [
     'JRPC-Common',
+    'JRPC-Extensions',
+    'JRPC-GS64-Extensions',
     'JRPC-Server-Core',
     'JRPC-Server-HTTP',
     'JRPC-Client-Core',
@@ -16,6 +18,8 @@ RwSimpleProjectLoadComponentV2 {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'JRPC-Common' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-Extensions' : { 'symbolDictName' : 'Globals' },
+          'JRPC-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
           'JRPC-Server-Core' : { 'symbolDictName' : 'JRPC' },
           'JRPC-Server-HTTP' : { 'symbolDictName' : 'JRPC' },
           'JRPC-Client-Core' : { 'symbolDictName' : 'JRPC' },
