@@ -30,6 +30,11 @@ JRPCClient >> callMethod: aString withId: anInteger [
 	^ self callMethod: aString arguments: nil withId: anInteger
 ]
 
+{ #category : #converting }
+JRPCClient >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
+
+	^ parser convertJRPCJsonableObjectToJSON: aJRPCJsonableObject
+]
 { #category : #initialization }
 JRPCClient >> initialize [
 
