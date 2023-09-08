@@ -6,7 +6,7 @@ promoting the project, or even contributing code.
 
 ## Reporting issues
 
-You can report issues [here](https://github.com/juliendelplanque/JRPC/issues/new)
+You can report issues [here](https://github.com/ba-st-dependencies/JRPC/issues/new)
 
 ## Contributing Code
 
@@ -15,8 +15,8 @@ You can report issues [here](https://github.com/juliendelplanque/JRPC/issues/new
   when you make backwards-incompatible changes. If some backwards incompatible
   change is made the major version MUST be increased.
 - The source code is hosted in this repository using the Tonel format in the
-  `src` folder.
-- The `master` branch contains the latest changes.
+  `source` folder.
+- The `release-candidate` branch contains the latest changes.
 - Feel free to send pull requests or fork the project.
 
 ### Using Iceberg
@@ -31,7 +31,7 @@ You can report issues [here](https://github.com/juliendelplanque/JRPC/issues/new
 7. Do the changes
 8. Run the test cases
 9. Commit and push your changes to the branch using the Iceberg UI
-10. Create a Pull Request against the `master` branch
+10. Create a Pull Request against the `release-candidate` branch
 
 ## Contributing documentation
 
