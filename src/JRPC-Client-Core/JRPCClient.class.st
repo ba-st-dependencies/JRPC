@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'parser'
 	],
-	#category : #'JRPC-Client-Core-JRPC-Client-Core'
+	#category : #'JRPC-Client-Core'
 }
 
 { #category : #api }
@@ -35,6 +35,7 @@ JRPCClient >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
 
 	^ parser convertJRPCJsonableObjectToJSON: aJRPCJsonableObject
 ]
+
 { #category : #initialization }
 JRPCClient >> initialize [
 
