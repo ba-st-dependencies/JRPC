@@ -8,8 +8,9 @@ To define that, #sendRequest: message should be overriden by my subclasses.
 Class {
 	#name : #JRPCClient,
 	#superclass : #Object,
-	#traits : 'JRPCParser',
-	#classTraits : 'JRPCParser classTrait',
+	#instVars : [
+		'parser'
+	],
 	#category : #'JRPC-Client'
 }
 
@@ -47,16 +48,11 @@ JRPCClient >> callMethod: aString withId: anInteger [
 	^ self callMethod: aString arguments: nil withId: anInteger
 ]
 
-{ #category : #converting }
-JRPCClient >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
-	^ String streamContents: [ :stream |
-		self convertJRPCJsonableObjectToJSON: aJRPCJsonableObject asJRPCJSON on: stream ]
-]
+{ #category : #initialization }
+JRPCClient >> initialize [
 
-{ #category : #testing }
-JRPCClient >> isClient [
-	"Returns true if the trait is used in the context of a client, false in the context of a server."
-	^ true
+	super initialize.
+	parser := JRPCParser new
 ]
 
 { #category : #api }
