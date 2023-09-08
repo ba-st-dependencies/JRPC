@@ -8,9 +8,6 @@ My subclasses must define:
 Class {
 	#name : #JRPCJsonableObject,
 	#superclass : #Object,
-	#pools : [
-		'JRPCConstantsSharedPool'
-	],
 	#category : #'JRPC-Common-Core'
 }
 

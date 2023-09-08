@@ -10,9 +10,6 @@ The server silently process the notification without returning a response to the
 Class {
 	#name : #JRPCNotificationObject,
 	#superclass : #JRPCRequestObject,
-	#pools : [
-		'JRPCConstantsSharedPool'
-	],
 	#category : #'JRPC-Common-Core'
 }
 

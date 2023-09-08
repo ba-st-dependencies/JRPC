@@ -24,12 +24,16 @@ JRPCAbstractMessageProcessor >> addHandler: aJRPCHandler [
 { #category : #'handlers management' }
 JRPCAbstractMessageProcessor >> addHandlerNamed: aString block: aBlock [
 
-	self
-		addHandler:
-			( JRPCBlockHandler new
-				methodName: aString;
-				block: aBlock;
-				yourself )
+	self addHandler: (JRPCBlockHandler methodName: aString block: aBlock)
+]
+
+{ #category : #'handlers management' }
+JRPCAbstractMessageProcessor >> addHandlerNamed: aString withArgumentsNamed: anArgumentNameCollection evaluating: aBlock [
+
+	self addHandler: (JRPCBlockHandler
+			 procedureName: aString
+			 block: aBlock
+			 argumentOrderDeterminedBy: anArgumentNameCollection)
 ]
 
 { #category : #'handlers management' }

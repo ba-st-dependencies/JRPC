@@ -8,28 +8,11 @@ To define that, #sendRequest: message should be overriden by my subclasses.
 Class {
 	#name : #JRPCClient,
 	#superclass : #Object,
-	#traits : 'JRPCParser',
-	#classTraits : 'JRPCParser classTrait',
-	#category : #'JRPC-Client'
+	#instVars : [
+		'parser'
+	],
+	#category : #'JRPC-Client-Core'
 }
-
-{ #category : #'instance creation' }
-JRPCClient class >> http: aString [
-	^ JRPCHTTPClient url: aString
-]
-
-{ #category : #'instance creation' }
-JRPCClient class >> tcp [
-	^ JRPCTCPClient new
-]
-
-{ #category : #'instance creation' }
-JRPCClient class >> tcpForAddress: aSocketAddress port: anInteger [
-	^ JRPCTCPClient new
-		address: aSocketAddress;
-		port: anInteger;
-		yourself
-]
 
 { #category : #api }
 JRPCClient >> callMethod: aString arguments: anObject withId: anInteger [
@@ -49,14 +32,15 @@ JRPCClient >> callMethod: aString withId: anInteger [
 
 { #category : #converting }
 JRPCClient >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
-	^ String streamContents: [ :stream |
-		self convertJRPCJsonableObjectToJSON: aJRPCJsonableObject asJRPCJSON on: stream ]
+
+	^ parser convertJRPCJsonableObjectToJSON: aJRPCJsonableObject
 ]
 
-{ #category : #testing }
-JRPCClient >> isClient [
-	"Returns true if the trait is used in the context of a client, false in the context of a server."
-	^ true
+{ #category : #initialization }
+JRPCClient >> initialize [
+
+	super initialize.
+	parser := JRPCParser new
 ]
 
 { #category : #api }

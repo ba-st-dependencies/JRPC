@@ -1,7 +1,7 @@
 Class {
 	#name : #JRPCTCPServerTest,
 	#superclass : #JRPCAbstractServerTest,
-	#category : #'JRPC-Tests'
+	#category : #'JRPC-TCP-Tests'
 }
 
 { #category : #'instance creation' }

@@ -65,11 +65,11 @@ JRPCBlockHandlerTest >> testParametersNames [
 	self assertCollection: handler parametersNames equals: #(#x #y)
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testUnnamedBlockHandlerRaiseErrorWhenMethodNameIsAsked [
 	| handler |
 	handler := JRPCBlockHandler new
-					block: [ :x :y | x + y ];
+					receiver: [ :x :y | x + y ];
 					yourself.
 					
 	self should: [ handler methodName ] raise: Error withExceptionDo: [ :error |

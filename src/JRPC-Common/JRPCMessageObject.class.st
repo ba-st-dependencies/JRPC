@@ -12,9 +12,6 @@ Class {
 		'jsonrpc',
 		'id'
 	],
-	#pools : [
-		'JRPCConstantsSharedPool'
-	],
 	#category : #'JRPC-Common-Core'
 }
 
@@ -37,7 +34,7 @@ JRPCMessageObject class >> classToInstantiateForJSONObject: aJSONObject forClien
 	aJSONObject
 		at: 'jsonrpc' "This MUST be in messages."
 		ifPresent: [ :value |
-			value = JSONRPC ifFalse: [ self error: 'Unsupported version of JSON-RPC. I can only handle JSON-RPC 2.0.' ].
+			value = JRPCConstants version ifFalse: [ self error: 'Unsupported version of JSON-RPC. I can only handle JSON-RPC 2.0.' ].
 			(aJSONObject includesKey: 'id')
 				ifFalse: [ ^ JRPCNotificationObject ].
 			(aJSONObject includesKey: 'result')
@@ -80,8 +77,9 @@ JRPCMessageObject >> id: anObject [
 
 { #category : #initialization }
 JRPCMessageObject >> initialize [
+
 	super initialize.
-	jsonrpc := JSONRPC
+	jsonrpc := JRPCConstants version
 ]
 
 { #category : #testing }

@@ -18,9 +18,6 @@ Class {
 		'message',
 		'data'
 	],
-	#pools : [
-		'JRPCConstantsSharedPool'
-	],
 	#category : #'JRPC-Common-Core'
 }
 
@@ -40,38 +37,44 @@ JRPCErrorObject class >> code: code message: message data: data [
 
 { #category : #'instance creation' }
 JRPCErrorObject class >> internalError [
-	^ self withPredefinedErrorCode: InternalError
+
+	^ self withPredefinedErrorCode: JRPCConstants internalErrorCode
 ]
 
 { #category : #'instance creation' }
 JRPCErrorObject class >> invalidParams [
-	^ self withPredefinedErrorCode: InvalidParams
+
+	^ self withPredefinedErrorCode: JRPCConstants invalidParametersErrorCode
 ]
 
 { #category : #'instance creation' }
 JRPCErrorObject class >> invalidRequest [
-	^ self withPredefinedErrorCode: InvalidRequest
+
+	^ self withPredefinedErrorCode: JRPCConstants invalidRequestErrorCode
 ]
 
 { #category : #'instance creation' }
 JRPCErrorObject class >> methodNotFound [
-	^ self withPredefinedErrorCode: MethodNotFound
+
+	^ self withPredefinedErrorCode: JRPCConstants methodNotFoundErrorCode
 ]
 
 { #category : #'instance creation' }
 JRPCErrorObject class >> parseError [
-	^ self withPredefinedErrorCode: ParseError
+
+	^ self withPredefinedErrorCode: JRPCConstants parseErrorCode
 ]
 
 { #category : #'instance creation' }
-JRPCErrorObject class >> withPredefinedErrorCode: anInteger [
-	^ self code: anInteger message: (ErrorCodesToMeaningDict at: anInteger)
+JRPCErrorObject class >> withPredefinedErrorCode: errorCode [
+
+	^ self code: errorCode message: ( JRPCConstants descriptionFor: errorCode )
 ]
 
 { #category : #converting }
 JRPCErrorObject >> asJRPCJSON [
 	| dict |
-	dict := Dictionary new.
+	dict := OrderedDictionary new.
 	dict at: 'code' put: self code asJRPCJSON.
 	dict at: 'message' put: self message asJRPCJSON.
 	self data 
@@ -96,6 +99,7 @@ JRPCErrorObject >> data [
 
 { #category : #accessing }
 JRPCErrorObject >> data: anObject [
+
 	data := anObject
 ]
 

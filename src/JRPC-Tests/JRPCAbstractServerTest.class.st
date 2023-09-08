@@ -72,25 +72,6 @@ JRPCAbstractServerTest >> testNotificationWithInvalidMethod [
 ]
 
 { #category : #accessing }
-JRPCAbstractServerTest >> testRequestOnInvalidEndpoint [
-
-	| httpClient failed |
-
-	server addHandlerNamed: 'sum' block: [ :a :b | a + b ].
-	failed := false.
-
-	httpClient := JRPCClient http: ( 'http://localhost' asUrl port: self port ) / 'bad'.
-	httpClient
-		ifFail: [ :error | 
-			failed := true.
-			'{}'
-			].
-	self
-		should: [ httpClient callMethod: 'sum' arguments: #(1 3) withId: 1 ] raise: JRPCIncorrectJSON;
-		assert: failed
-]
-
-{ #category : #accessing }
 JRPCAbstractServerTest >> testRequestWithoutParameters [
 
 	server addHandlerNamed: 'zero' block: [ 0 ].

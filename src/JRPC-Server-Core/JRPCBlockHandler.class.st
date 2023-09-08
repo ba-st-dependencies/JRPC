@@ -7,7 +7,7 @@ Class {
 	#name : #JRPCBlockHandler,
 	#superclass : #JRPCMessageSendHandler,
 	#instVars : [
-		'block'
+		'argumentNames'
 	],
 	#category : #'JRPC-Server-Core'
 }
@@ -22,37 +22,35 @@ JRPCBlockHandler class >> defaultMethodName [
 
 { #category : #'instance creation' }
 JRPCBlockHandler class >> methodName: methodName block: block [
-	"Creates a new handler with the specified methodName and the execution specificied by the #block."
-	^ self new
-		methodName: methodName;
-		block: block;
-		yourself
+
+	^ self
+		  procedureName: methodName
+		  block: block
+		  argumentOrderDeterminedBy: block argumentNames
 ]
 
-{ #category : #accessing }
-JRPCBlockHandler >> block [
-	^ self receiver
+{ #category : #'instance creation' }
+JRPCBlockHandler class >> procedureName: aString block: aBlock argumentOrderDeterminedBy: anArgumentNamesArray [
+
+	^self new
+		initializeProcedureName: aString
+		block: aBlock
+		argumentOrderDeterminedBy: anArgumentNamesArray
 ]
 
-{ #category : #accessing }
-JRPCBlockHandler >> block: anObject [
-	self receiver: anObject
-]
+{ #category : #initialization }
+JRPCBlockHandler >> initializeProcedureName: aProcedureName block: aBlock argumentOrderDeterminedBy: anArgumentNamesArray [
 
-{ #category : #accessing }
-JRPCBlockHandler >> messageSelector [
-	^ #valueWithArguments:
-]
-
-{ #category : #accessing }
-JRPCBlockHandler >> messageSelector: anObject [
-	self error: 'Can not set the message selector manually, this is deteminated depending on the #block to execute.'
+	self methodName: aProcedureName.
+	self receiver: aBlock.
+	self messageSelector: #valueWithArguments:.
+	argumentNames := anArgumentNamesArray collect: #asString
 ]
 
 { #category : #accessing }
 JRPCBlockHandler >> parametersNames [
-	"Returns the names of the parameters expected by the handler as a collection."
-	^ self block argumentNames
+
+	^ argumentNames
 ]
 
 { #category : #private }

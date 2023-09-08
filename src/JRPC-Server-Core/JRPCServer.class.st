@@ -32,6 +32,15 @@ JRPCServer >> addHandlerNamed: aString block: aBlock [
 ]
 
 { #category : #'handlers management' }
+JRPCServer >> addHandlerNamed: aString withArgumentsNamed: argumentNames evaluating: aBlock [
+
+	self messageProcessor
+		addHandlerNamed: aString
+		withArgumentsNamed: argumentNames
+		evaluating: aBlock
+]
+
+{ #category : #'handlers management' }
 JRPCServer >> addHandlersFromPragmasIn: anObject [
 
 	self messageProcessor addHandlersFromPragmasIn: anObject

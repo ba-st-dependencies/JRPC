@@ -10,7 +10,7 @@ Class {
 		'address',
 		'port'
 	],
-	#category : #'JRPC-Client'
+	#category : #'JRPC-Client-TCP'
 }
 
 { #category : #defaults }
@@ -45,14 +45,14 @@ JRPCTCPClient >> port: anObject [
 
 { #category : #'private - sending' }
 JRPCTCPClient >> sendRequest: aJRPCRequestObject [
+
 	| socket result |
+
 	socket := Socket newTCP.
-	socket
-		connectTo: self address
-		port: self port.
-	socket
-		sendData: (self convertJRPCJsonableObjectToJSON: aJRPCRequestObject asJRPCJSON).
-	result := socket receiveData.
-	socket closeAndDestroy.
-	^ self parseSupposedJRPCMessageObjectFromString: result
+	socket connectTo: self address port: self port.
+	result := [
+	          socket sendData: ( self convertJRPCJsonableObjectToJSON: aJRPCRequestObject asJRPCJSON ).
+	          socket receiveData
+	          ] ensure: [ socket closeAndDestroy ].
+	^ parser parseSupposedJRPCMessageObjectFromString: result forClient: true
 ]

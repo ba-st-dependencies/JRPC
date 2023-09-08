@@ -8,12 +8,11 @@ A JSON RPC server must solve the specific transport details and handle to me the
 Class {
 	#name : #JRPCMessageProcessor,
 	#superclass : #JRPCAbstractMessageProcessor,
-	#traits : 'JRPCParser',
-	#classTraits : 'JRPCParser classTrait',
 	#instVars : [
 		'handlers',
 		'debugMode',
-		'errorHandlers'
+		'errorHandlers',
+		'parser'
 	],
 	#category : #'JRPC-Server-Core'
 }
@@ -31,6 +30,12 @@ JRPCMessageProcessor >> addHandler: aJRPCHandler [
 		ifTrue: [ JRPCDuplicatedHandlerError signalForHandler: aJRPCHandler ].
 
 	handlers add: aJRPCHandler
+]
+
+{ #category : #converting }
+JRPCMessageProcessor >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
+
+	^ parser convertJRPCJsonableObjectToJSON: aJRPCJsonableObject
 ]
 
 { #category : #accessing }
@@ -109,12 +114,15 @@ JRPCMessageProcessor >> handleJSON: aJSONString [
 
 	| jrpcResponse |
 
-	jrpcResponse := [ ( self parseSupposedJRPCMessageObjectFromString: aJSONString ) beHandledBy: self ]
-		on: Error
-		do: [ :error | 
-			self debugMode
-				ifTrue: [ error pass ]
-				ifFalse: [ error return: error asJRPCResponse ] ].
+	jrpcResponse := [
+	                ( parser parseSupposedJRPCMessageObjectFromString: aJSONString forClient: false )
+		                beHandledBy: self ]
+		                on: Error
+		                do: [ :error |
+			                self debugMode
+				                ifTrue: [ error pass ]
+				                ifFalse: [ error return: error asJRPCResponse ]
+			                ].
 
 	^ jrpcResponse beConvertedBy: self
 ]
@@ -146,15 +154,10 @@ JRPCMessageProcessor >> handlersCount [
 JRPCMessageProcessor >> initialize [
 
 	super initialize.
+	parser := JRPCParser new.
 	handlers := OrderedCollection new.
 	errorHandlers := OrderedCollection new.
 	self debugMode: false
-]
-
-{ #category : #testing }
-JRPCMessageProcessor >> isClient [
-
-	^ false
 ]
 
 { #category : #'handlers management' }
