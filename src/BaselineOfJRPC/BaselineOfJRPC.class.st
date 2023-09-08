@@ -41,7 +41,7 @@ BaselineOfJRPC >> setUpPackages: spec [
 
 	spec
 		group: 'Deployment'
-		with: #('Server-Deployment' 'HTTP-Transport' 'TCP-Transport' 'Client-Deployment' 'JRPC-Server-Deprecated').
+		with: #('Server-Deployment' 'HTTP-Transport' 'TCP-Transport' 'Client-Deployment').
 		
 	spec
 		package: 'JRPC-Tests' with: [ spec requires: 'Deployment' ];
