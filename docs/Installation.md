@@ -10,10 +10,10 @@ You can load **JRPC** evaluating:
 ```smalltalk
 Metacello new
 	baseline: 'JRPC';
-	repository: 'github://juliendelplanque/JRPC:master/src';
+	repository: 'github://ba-st-dependencies/JRPC:release-candidate/source';
 	load.
 ```
->  Change `master` to some released version if you want a pinned version
+>  Change `release-candidate` to some released version if you want a pinned version
 
 ## Using as dependency
 
@@ -25,7 +25,7 @@ setUpDependencies: spec
 	spec
 		baseline: 'JRPC'
 			with: [ spec
-				repository: 'github://juliendelplanque/JRPC:v{XX}/src';
+				repository: 'github://ba-st-dependencies/JRPC:v{XX}/source';
 				loads: #('Deployment') ];
 		import: 'JRPC'.
 ```

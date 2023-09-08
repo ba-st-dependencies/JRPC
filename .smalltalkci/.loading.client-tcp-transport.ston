@@ -2,7 +2,7 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'JRPC',
-      #directory : '../src',
+      #directory : '../source',
       #load : [ 'Client-TCP-Transport' ],
       #platforms : [  #pharo ]
     }
