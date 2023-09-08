@@ -26,7 +26,7 @@ BaselineOfJRPC >> projectClass [
 BaselineOfJRPC >> setUpClientDeploymentPackages: spec [
 
 	spec
-		package: 'JRPC-Client-Core' with: [ spec requires: 'JRPC-Common' ];
+		package: 'JRPC-Client-Core' with: [ spec requires: 'JRPC-Extensions' ];
 		group: 'Client-Deployment' with: 'JRPC-Client-Core';
 		package: 'JRPC-Client-HTTP' with: [ spec requires: 'JRPC-Client-Core' ];
 		group: 'Client-HTTP-Transport' with: 'JRPC-Client-HTTP';
@@ -38,6 +38,9 @@ BaselineOfJRPC >> setUpClientDeploymentPackages: spec [
 BaselineOfJRPC >> setUpPackages: spec [
 
 	spec package: 'JRPC-Common'.
+	spec
+		package: 'JRPC-Extensions'
+		with: [ spec requires: 'JRPC-Common' ].
 	self
 		setUpServerDeploymentPackages: spec;
 		setUpClientDeploymentPackages: spec.
@@ -48,7 +51,8 @@ BaselineOfJRPC >> setUpPackages: spec [
 		group: 'TCP-Transport' with: 'Server-TCP-Transport';
 		group: 'TCP-Transport' with: 'Client-TCP-Transport';
 		group: 'Deployment'
-		with: #( 'Server-Deployment' 'HTTP-Transport' 'TCP-Transport' 'Client-Deployment' ).
+		with: #( 'Server-Deployment' 'HTTP-Transport' 'TCP-Transport'
+			   'Client-Deployment' ).
 
 	self setUpTestPackages: spec
 ]
@@ -57,7 +61,7 @@ BaselineOfJRPC >> setUpPackages: spec [
 BaselineOfJRPC >> setUpServerDeploymentPackages: spec [
 
 	spec
-		package: 'JRPC-Server-Core' with: [ spec requires: 'JRPC-Common' ];
+		package: 'JRPC-Server-Core' with: [ spec requires: 'JRPC-Extensions' ];
 		group: 'Server-Deployment' with: 'JRPC-Server-Core'.
 
 	spec

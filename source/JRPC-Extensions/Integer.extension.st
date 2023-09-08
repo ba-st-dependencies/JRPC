@@ -1,6 +1,6 @@
 Extension { #name : #Integer }
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Integer >> asJRPCJSON [
 	^ self
 ]
