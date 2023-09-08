@@ -29,7 +29,7 @@ BaselineOfJRPC >> setUpClientDeploymentPackages: spec [
 		package: 'JRPC-Client-Core' with: [ spec requires: 'JRPC-Common' ];
 		group: 'Client-Deployment' with: 'JRPC-Client-Core';
 		package: 'JRPC-Client-HTTP' with: [ spec requires: 'JRPC-Client-Core' ];
-		group: 'Client-HTTP-Transport' with: 'JRPC-Client';
+		group: 'Client-HTTP-Transport' with: 'JRPC-Client-HTTP';
 		package: 'JRPC-Client-TCP' with: [ spec requires: 'JRPC-Client-Core' ];
 		group: 'Client-TCP-Transport' with: 'JRPC-Client-TCP'
 ]
