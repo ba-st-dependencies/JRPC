@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'httpClient'
 	],
-	#category : #'JRPC-Client'
+	#category : #'JRPC-Client-HTTP'
 }
 
 { #category : #'instance creation' }

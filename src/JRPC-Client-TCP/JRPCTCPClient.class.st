@@ -10,7 +10,7 @@ Class {
 		'address',
 		'port'
 	],
-	#category : #'JRPC-Client'
+	#category : #'JRPC-Client-TCP'
 }
 
 { #category : #defaults }

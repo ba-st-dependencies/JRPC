@@ -11,26 +11,8 @@ Class {
 	#instVars : [
 		'parser'
 	],
-	#category : #'JRPC-Client'
+	#category : #'JRPC-Client-Core-JRPC-Client-Core'
 }
-
-{ #category : #'instance creation' }
-JRPCClient class >> http: aString [
-	^ JRPCHTTPClient url: aString
-]
-
-{ #category : #'instance creation' }
-JRPCClient class >> tcp [
-	^ JRPCTCPClient new
-]
-
-{ #category : #'instance creation' }
-JRPCClient class >> tcpForAddress: aSocketAddress port: anInteger [
-	^ JRPCTCPClient new
-		address: aSocketAddress;
-		port: anInteger;
-		yourself
-]
 
 { #category : #api }
 JRPCClient >> callMethod: aString arguments: anObject withId: anInteger [
@@ -46,12 +28,6 @@ JRPCClient >> callMethod: aString arguments: anObject withId: anInteger [
 JRPCClient >> callMethod: aString withId: anInteger [
 	"Call a method which takes no arguments."
 	^ self callMethod: aString arguments: nil withId: anInteger
-]
-
-{ #category : #converting }
-JRPCClient >> convertJRPCJsonableObjectToJSON: aJRPCJsonableObject [
-
-	^ parser convertJRPCJsonableObjectToJSON: aJRPCJsonableObject
 ]
 
 { #category : #initialization }
