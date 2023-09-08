@@ -73,7 +73,5 @@ BaselineOfJRPC >> setUpServerDeploymentPackages: spec [
 	spec
 		package: 'JRPC-Server-Logging' with: [ spec requires: 'JRPC-Server-Core' ];
 		group: 'Server-Logging' with: 'JRPC-Server-Logging'.
-		
-	spec
-		package: 'JRPC-Server-Deprecated' with: [ spec requires: 'JRPC-Server-Core' ]
+
 ]

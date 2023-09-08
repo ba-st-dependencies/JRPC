@@ -1,13 +1,11 @@
 # JRPC
 
-[![Unit Tests](https://github.com/juliendelplanque/JRPC/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/juliendelplanque/JRPC/actions/workflows/unit-tests.yml)
-[![Coverage Status](https://codecov.io/github/juliendelplanque/JRPC/coverage.svg?branch=master)](https://codecov.io/gh/juliendelplanque/JRPC/branch/master)
-[![Baseline Groups](https://github.com/juliendelplanque/JRPC/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/juliendelplanque/JRPC/actions/workflows/loading-groups.yml)
+[![Unit Tests](https://github.com/ba-st-dependencies/JRPC/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st-dependencies/JRPC/actions/workflows/unit-tests.yml)
+[![Coverage Status](https://codecov.io/github/ba-st-dependencies/JRPC/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st-dependencies/JRPC/branch/release-candidate)
+[![Baseline Groups](https://github.com/ba-st-dependencies/JRPC/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st-dependencies/JRPC/actions/workflows/loading-groups.yml)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Pharo version](https://img.shields.io/badge/Pharo-7.0-%23aac9ff.svg)](https://pharo.org/download)
-[![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
-[![Pharo version](https://img.shields.io/badge/Pharo-9.0-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo 9](https://img.shields.io/badge/Pharo-9.0-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
 
