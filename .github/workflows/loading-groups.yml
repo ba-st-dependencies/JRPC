@@ -8,8 +8,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        smalltalk: [ Pharo64-11, Pharo64-10, Pharo64-9.0, Pharo64-8.0 ]
-        load-spec: [ client-deployment, server-deployment, http-transport, tcp-transport, server-logging ]
+        smalltalk: 
+          - Pharo64-11
+          - Pharo64-10
+          - Pharo64-9.0
+        load-spec:
+          - client-deployment
+          - client-http-transport
+          - client-tcp-transport
+          - http-transport
+          - server-deployment
+          - server-logging
+          - server-http-transport
+          - server-tcp-transport
+          - tcp-transport
     name: ${{ matrix.smalltalk }} + ${{ matrix.load-spec }}
     steps:
       - uses: actions/checkout@v3
