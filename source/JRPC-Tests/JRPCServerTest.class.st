@@ -85,8 +85,8 @@ JRPCServerTest >> testAddHandlerNamedWithArgumentsBlock [
 		assert: response result equals: 7.
 
 	request := JRPCRequestObject id: 1 method: 'sum' params: {
-			           #y -> 4.
-			           #x -> 3 } asDictionary.
+			           'y' -> 4.
+			           'x' -> 3 } asDictionary.
 	response := server handleJRPCRequestObject: request.
 
 	self
@@ -288,7 +288,7 @@ JRPCServerTest >> testHandleJSON [
 	| jsonResponse |
 	jsonResponse := server handleJSON: '{"jsonrpc" : "2.0", "id" : 41, "method" : "setUpHandler"}'.
 	
-	self assert: jsonResponse equals: '{"jsonrpc":"2.0","result":42,"id":41}'.
+	self assert: jsonResponse equals: '{"jsonrpc":"2.0","id":41,"result":42}'.
 	
 	jsonResponse := server handleJSON: '{'.
 	

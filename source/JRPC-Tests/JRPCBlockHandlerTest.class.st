@@ -7,7 +7,7 @@ Class {
 	#category : #'JRPC-Tests'
 }
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testCheckParametersForRequest [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x | ].
@@ -20,20 +20,20 @@ JRPCBlockHandlerTest >> testCheckParametersForRequest [
 	] raise: JRPCInvalidParameters.
 
 	self should: [ 
-		handler checkParametersForRequest: (JRPCRequestObject new params: { #x -> 1 . #y -> 2 } asDictionary; yourself)
+		handler checkParametersForRequest: (JRPCRequestObject new params: { 'x' -> 1 . 'y' -> 2 } asDictionary; yourself)
 	] raise: JRPCInvalidParameters.
 	
 	self should: [ 
-		handler checkParametersForRequest: (JRPCRequestObject new params: { #y -> 1 } asDictionary; yourself)
+		handler checkParametersForRequest: (JRPCRequestObject new params: { 'y' -> 1 } asDictionary; yourself)
 	] raise: JRPCInvalidParameters.
 	
 	"The two next will not raise error."
 	handler checkParametersForRequest: (JRPCRequestObject new params: #(1); yourself).
 		
-	handler checkParametersForRequest: (JRPCRequestObject new params: { #x -> 1 } asDictionary; yourself)
+	handler checkParametersForRequest: (JRPCRequestObject new params: { 'x' -> 1 } asDictionary; yourself)
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testExecuteWithArgumentsBeingArray [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x :y | x + y ].
@@ -41,7 +41,7 @@ JRPCBlockHandlerTest >> testExecuteWithArgumentsBeingArray [
 	self assertCollection: (handler executeWithArguments: #(1 2)) equals: 3
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testExecuteWithArgumentsDictionary [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x :y | x + y ].
@@ -49,7 +49,7 @@ JRPCBlockHandlerTest >> testExecuteWithArgumentsDictionary [
 	self assertCollection: (handler executeWithArguments: { 'x' -> 1. 'y' -> 2 } asDictionary) equals: 3
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testParametersCount [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x :y | x + y ].
@@ -57,7 +57,7 @@ JRPCBlockHandlerTest >> testParametersCount [
 	self assert: handler parametersCount equals: 2
 ]
 
-{ #category : #test }
+{ #category : #tests }
 JRPCBlockHandlerTest >> testParametersNames [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x :y | x + y ].
