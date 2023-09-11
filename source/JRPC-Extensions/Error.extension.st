@@ -2,13 +2,13 @@ Extension { #name : #Error }
 
 { #category : #'*JRPC-Extensions' }
 Error >> asJRPCJSON [
-	^ { 
-		'errorClass' -> self className.
-		'messageText' -> (self messageText ifNotNil: #asString).
-		'tag' -> (self tag ifNotNil: #asString).
-		'signaler' -> (self signaler ifNotNil: #asString).
-		'signalerContext' -> (self signalerContext ifNotNil: #asString)
-	} asDictionary
+
+	^ {
+		  'errorClass' -> self class name asString.
+		  'messageText'
+		   -> (self messageText ifNotNil: [ :message | message asString ]).
+		  'tag' -> (self tag ifNotNil: [ :object | object asString ]) }
+		  asDictionary
 ]
 
 { #category : #'*JRPC-Extensions' }

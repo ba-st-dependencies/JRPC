@@ -299,25 +299,28 @@ JRPCServerTest >> testHandleJSON [
 JRPCServerTest >> testInternalError [
 
 	| requestForInternalError response data |
-
 	server addHandlerNamed: 'divide' block: [ :x :y | x / y ].
 
-	requestForInternalError := JRPCRequestObject id: 1 method: 'divide' params: #( 1 0 ).
+	requestForInternalError := JRPCRequestObject
+		                           id: 1
+		                           method: 'divide'
+		                           params: #( 1 0 ).
 
 	response := server handleJRPCRequestObject: requestForInternalError.
 
 	self assert: response class equals: JRPCErrorResponseObject.
-	self assert: response error code equals: JRPCConstants internalErrorCode.
+	self
+		assert: response error code
+		equals: JRPCConstants internalErrorCode.
 	self
 		assert: response error message
-		equals: ( JRPCConstants descriptionFor: JRPCConstants internalErrorCode ).
+		equals:
+		(JRPCConstants descriptionFor: JRPCConstants internalErrorCode).
 	self assert: response error data isNotNil.
 
 	data := response error data.
 	self assertCollection: data equals: {
-			( 'errorClass' -> 'ZeroDivide' ).
-			( 'messageText' -> '' ).
-			( 'tag' -> '' ).
-			( 'signaler' -> '1' ).
-			( 'signalerContext' -> 'SmallInteger>>/' ) } asDictionary
+			'errorClass' -> 'ZeroDivide'.
+			'messageText' -> ''.
+			'tag' -> '' } asDictionary
 ]
