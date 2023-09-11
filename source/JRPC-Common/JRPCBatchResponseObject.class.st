@@ -26,10 +26,8 @@ JRPCBatchResponseObject class >> fromJRPCJSONObject: aJSONObject [
 
 { #category : #converting }
 JRPCBatchResponseObject >> asJRPCJSON [
-	^ self responses
-		collect: #asJRPCJSON
-		"JRPCEmptyResponseObjects will generate nil and should be removed from the JSON object"
-		thenReject: #isNil
+
+	^ self responses select: #isNotEmpty thenCollect: #asJRPCJSON
 ]
 
 { #category : #'server conversion' }

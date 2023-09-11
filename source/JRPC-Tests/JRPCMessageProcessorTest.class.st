@@ -10,7 +10,7 @@ Class {
 { #category : #private }
 JRPCMessageProcessorTest >> powerOf2Handler [
 
-	^ JRPCBlockHandler methodName: 'powerOf2' block: [ :x | x ** 2 ]
+	^ JRPCBlockHandler methodName: 'powerOf2' block: [ :x | x raisedTo: 2 ]
 ]
 
 { #category : #tests }
@@ -182,7 +182,7 @@ JRPCMessageProcessorTest >> testHandlerFor [
 
 	self should: [ messageProcessor handlerFor: (JRPCRequestObject id: 1 method: 'powerOf2') ] raise: JRPCNonExistentHandler.
 
-	block := [ :anInteger | anInteger ** 2 ].
+	block := [ :anInteger | anInteger raisedTo: 2 ].
 
 	messageProcessor addHandlerNamed: 'powerOf2' block: block.
 	handler := messageProcessor handlerFor: (JRPCRequestObject id: 1 method: 'powerOf2').

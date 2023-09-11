@@ -14,6 +14,18 @@ JRPCResponseObject >> beConvertedBy: aJRPCMessageProcessor [
 ]
 
 { #category : #testing }
+JRPCResponseObject >> isEmpty [
+
+	^ false
+]
+
+{ #category : #testing }
 JRPCResponseObject >> isError [
 	^ false
+]
+
+{ #category : #testing }
+JRPCResponseObject >> isNotEmpty [
+
+	^ self isEmpty not
 ]

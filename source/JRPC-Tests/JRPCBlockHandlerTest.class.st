@@ -62,7 +62,7 @@ JRPCBlockHandlerTest >> testParametersNames [
 	| handler |
 	handler := JRPCBlockHandler methodName: 'test' block: [ :x :y | x + y ].
 	
-	self assertCollection: handler parametersNames equals: #(#x #y)
+	self assertCollection: handler parametersNames equals: #('x' 'y')
 ]
 
 { #category : #tests }

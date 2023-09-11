@@ -23,17 +23,16 @@ Class {
 
 { #category : #'parameters-checking' }
 JRPCMessageSendHandler >> checkParametersForRequest: aJRPCRequestObject [
+
 	aJRPCRequestObject params
-		ifNil: [ 
-			self parametersCount = 0
-				ifFalse: [ JRPCInvalidParameters signal ] ].
-	
-	(aJRPCRequestObject params ifNil: [ #() ]) size = self parametersCount
-		ifFalse: [ JRPCInvalidParameters signal ].
-		
-	(aJRPCRequestObject params isDictionary
-		and: [ ((aJRPCRequestObject params keys union: self parametersNames) size ~= self parametersCount) ])
-			ifTrue: [ JRPCInvalidParameters signal ]
+		ifNil: [
+		self parametersCount = 0 ifFalse: [ JRPCInvalidParameters signal ] ]
+		ifNotNil: [ :requestParameters |
+			requestParameters size = self parametersCount ifFalse: [
+				JRPCInvalidParameters signal ].
+			(requestParameters isDictionary not or: [
+				 requestParameters keys includesAll: self parametersNames ])
+				ifFalse: [ JRPCInvalidParameters signal ] ]
 ]
 
 { #category : #evaluation }

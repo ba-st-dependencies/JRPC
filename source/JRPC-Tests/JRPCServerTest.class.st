@@ -299,7 +299,13 @@ JRPCServerTest >> testHandleJSON [
 JRPCServerTest >> testInternalError [
 
 	| requestForInternalError response data |
-	server addHandlerNamed: 'divide' block: [ :x :y | x / y ].
+	server addHandlerNamed: 'divide' block: [ :x :y |
+		y isZero ifTrue: [
+			ZeroDivide new
+				messageText: 'Division by zero';
+				tag: x;
+				signal ].
+		x / y ].
 
 	requestForInternalError := JRPCRequestObject
 		                           id: 1
@@ -321,6 +327,6 @@ JRPCServerTest >> testInternalError [
 	data := response error data.
 	self assertCollection: data equals: {
 			'errorClass' -> 'ZeroDivide'.
-			'messageText' -> ''.
-			'tag' -> '' } asDictionary
+			'messageText' -> 'Division by zero'.
+			'tag' -> '1' } asDictionary
 ]
