@@ -1,0 +1,14 @@
+RwLoadSpecificationV2 {
+  #specName: 'JRPC-CI',
+  #projectName : 'JRPC',
+  #diskUrl : 'JRPC',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Tests'
+  ],
+  #customConditionalAttributes : [
+    'tests',
+    'sunit'
+  ],
+  #comment : 'Loading spec for the continuous integration setup'
+}

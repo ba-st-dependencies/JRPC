@@ -1,0 +1,33 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Deployment',
+  #projectNames : [
+    'Zinc'
+  ],
+  #componentNames : [	],
+  #packageNames : [
+    'JRPC-Common',
+    'JRPC-Extensions',
+    'JRPC-GS64-Extensions',
+    'JRPC-STON-Extensions',
+    'JRPC-Server-Core',
+    'JRPC-Server-HTTP',
+    'JRPC-Client-Core',
+    'JRPC-Client-HTTP'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'JRPC-Common' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-Extensions' : { 'symbolDictName' : 'Globals' },
+          'JRPC-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
+          'JRPC-STON-Extensions' : { 'symbolDictName' : 'RowanKernel' },
+          'JRPC-Server-Core' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-Server-HTTP' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-Client-Core' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-Client-HTTP' : { 'symbolDictName' : 'JRPC' }
+        }
+      }
+    }
+  }
+}

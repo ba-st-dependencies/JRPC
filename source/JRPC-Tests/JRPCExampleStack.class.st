@@ -10,19 +10,19 @@ Class {
 { #category : #initialization }
 JRPCExampleStack >> initialize [
 	super initialize.
-	stack := Stack new.
+	stack := OrderedCollection new.
 ]
 
 { #category : #removing }
 JRPCExampleStack >> pop [
 	<jrpc: #stack_pop>
-	^ stack pop
+	^ stack removeFirst
 ]
 
 { #category : #removing }
 JRPCExampleStack >> push: anObject [
 	<jrpc: #stack_push>
-	stack push: anObject.
+	stack addFirst: anObject.
 	"We return nil explicitely, else as the default behaviour is to return self,
 	 it will result in a server error.
 	 It is possible to let a method exposed as a JRPC procedure return self but,
@@ -34,5 +34,5 @@ JRPCExampleStack >> push: anObject [
 { #category : #removing }
 JRPCExampleStack >> top [
 	<jrpc: #stack_top>
-	^ stack top
+	^ stack first
 ]

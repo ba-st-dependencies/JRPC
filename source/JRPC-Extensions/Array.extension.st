@@ -1,6 +1,6 @@
 Extension { #name : #Array }
 
-{ #category : #'*JRPC-Common' }
+{ #category : #'*JRPC-Extensions' }
 Array >> asJRPCJSON [
 	^ self collect: #asJRPCJSON
 ]

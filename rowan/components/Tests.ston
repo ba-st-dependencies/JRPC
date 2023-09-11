@@ -1,0 +1,22 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Tests',
+  #condition : 'tests',
+  #projectNames : [ ],
+  #componentNames : [
+    'Deployment'
+  ],
+  #packageNames : [
+    'JRPC-Tests',
+    'JRPC-HTTP-Tests'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'JRPC-Tests' : { 'symbolDictName' : 'JRPC' },
+          'JRPC-HTTP-Tests' : { 'symbolDictName' : 'JRPC' }
+        }
+      }
+    }
+  }
+}

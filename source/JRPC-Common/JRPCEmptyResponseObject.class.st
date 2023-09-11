@@ -20,3 +20,9 @@ JRPCEmptyResponseObject >> beConvertedBy: aJRPCMessageProcessor [
 
 	^ ''
 ]
+
+{ #category : #testing }
+JRPCEmptyResponseObject >> isEmpty [
+
+	^ true
+]

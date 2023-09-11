@@ -101,5 +101,5 @@ JRPCAbstractHandler >> methodName [
 
 { #category : #accessing }
 JRPCAbstractHandler >> methodName: anObject [
-	methodName := anObject
+	methodName := anObject asString
 ]

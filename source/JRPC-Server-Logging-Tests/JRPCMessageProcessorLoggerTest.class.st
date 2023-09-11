@@ -14,7 +14,7 @@ JRPCMessageProcessorLoggerTest >> testHandleJSON [
 	messageProcessor := JRPCMessageProcessor new.
 	messageProcessor addHandler: (JRPCBlockHandler
 			 methodName: 'powerOf2'
-			 block: [ :anInteger | anInteger ** 2 ]).
+			 block: [ :anInteger | anInteger raisedTo: 2 ]).
 	logger := JRPCMessageProcessorLogger decorate: messageProcessor.
 
 	self assert: logger logs isEmpty.

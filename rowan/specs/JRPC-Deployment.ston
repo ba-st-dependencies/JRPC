@@ -1,0 +1,9 @@
+RwLoadSpecificationV2 {
+  #specName: 'JRPC-CI',
+  #projectName : 'JRPC',
+  #diskUrl : 'JRPC',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Deployment'
+  ]
+}
