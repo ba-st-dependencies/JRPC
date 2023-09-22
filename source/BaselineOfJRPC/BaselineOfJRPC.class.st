@@ -35,6 +35,14 @@ BaselineOfJRPC >> setUpClientDeploymentPackages: spec [
 ]
 
 { #category : #baselines }
+BaselineOfJRPC >> setUpDependencies: spec [
+
+	spec
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v7' ];
+		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ]
+]
+
+{ #category : #baselines }
 BaselineOfJRPC >> setUpPackages: spec [
 
 	spec package: 'JRPC-Common'.
@@ -63,7 +71,8 @@ BaselineOfJRPC >> setUpPackages: spec [
 BaselineOfJRPC >> setUpServerDeploymentPackages: spec [
 
 	spec
-		package: 'JRPC-Server-Core' with: [ spec requires: #('JRPC-Extensions' 'JRPC-STON-Extensions') ];
+		package: 'JRPC-Server-Core'
+		with: [ spec requires: #( 'JRPC-Extensions' 'JRPC-STON-Extensions' 'Buoy-Deployment' ) ];
 		group: 'Server-Deployment' with: 'JRPC-Server-Core'.
 
 	spec
