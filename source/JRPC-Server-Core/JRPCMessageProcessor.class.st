@@ -53,13 +53,12 @@ JRPCMessageProcessor >> handleErrorsDuring: aBlock for: aJRPCRequestObject [
 
 	^ self debugMode
 		  ifTrue: aBlock
-		  ifFalse: [ 
-			  aBlock
-				  on: Error
-				  do: [ :jrpcError | 
-					  errorHandlers do: [ :handler | handler cull: jrpcError ].
-					  jrpcError return:
-						  (aJRPCRequestObject convertErrorToResponse: jrpcError) ] ]
+		  ifFalse: [
+			  aBlock on: Error except: Exit do: [ :jrpcError |
+				  errorHandlers do: [ :handler | handler cull: jrpcError ].
+				  jrpcError return: ( aJRPCRequestObject convertErrorToResponse: jrpcError )
+				  ]
+			  ]
 ]
 
 { #category : #'handling - jrpc' }
@@ -116,13 +115,11 @@ JRPCMessageProcessor >> handleJSON: aJSONString [
 
 	jrpcResponse := [
 	                ( parser parseSupposedJRPCMessageObjectFromString: aJSONString forClient: false )
-		                beHandledBy: self ]
-		                on: Error
-		                do: [ :error |
-			                self debugMode
-				                ifTrue: [ error pass ]
-				                ifFalse: [ error return: error asJRPCResponse ]
-			                ].
+		                beHandledBy: self ] on: Error except: Exit do: [ :error |
+		                self debugMode
+			                ifTrue: [ error pass ]
+			                ifFalse: [ error return: error asJRPCResponse ]
+		                ].
 
 	^ jrpcResponse beConvertedBy: self
 ]
