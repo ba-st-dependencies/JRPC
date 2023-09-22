@@ -24,3 +24,9 @@ Error >> asJRPCResponseWithId: anInteger [
 		data: self asJRPCJSON.
 	^ response
 ]
+
+{ #category : #'*JRPC-Extensions' }
+Error >> isIncorrectJSON [
+
+	^ false
+]

@@ -20,8 +20,3 @@ JRPCError >> asJRPCResponseWithId: anInteger [
 	 To be overrided by subclasses."
 	^ self subclassResponsibility
 ]
-
-{ #category : #testing }
-JRPCError >> isIncorrectJSON [
-	^ false
-]
