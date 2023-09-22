@@ -9,7 +9,9 @@ BaselineOfJRPC >> baseline: spec [
 
 	<baseline>
 	spec for: #pharo do: [
-		self setUpPackages: spec.
+		self
+			setUpDependencies: spec;
+			setUpPackages: spec.
 		spec
 			group: 'CI' with: 'Tests';
 			group: 'Development' with: 'Tests'
