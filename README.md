@@ -47,7 +47,7 @@ Explore the [documentation](docs/Examples.md)
 
 ## Installation
 
-To load the project in a Pharo image or declare it as a dependency of your project follow this [instructions](docs/Installation.md).
+To load the project in a Pharo image or declare it as a dependency of your project follow these [instructions](docs/Installation.md).
 
 ## Comparison with other JSON RPC implementations
 
