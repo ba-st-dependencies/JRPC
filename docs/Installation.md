@@ -7,13 +7,15 @@
 ## Basic Installation
 
 You can load **JRPC** evaluating:
+
 ```smalltalk
 Metacello new
-	baseline: 'JRPC';
-	repository: 'github://ba-st-dependencies/JRPC:release-candidate/source';
-	load.
+  baseline: 'JRPC';
+  repository: 'github://ba-st-dependencies/JRPC:release-candidate/source';
+  load.
 ```
->  Change `release-candidate` to some released version if you want a pinned version
+
+> Change `release-candidate` to some released version if you want a pinned version
 
 ## Using as dependency
 
@@ -22,23 +24,24 @@ In order to include **JRPC** as part of your project, you should reference the p
 ```smalltalk
 setUpDependencies: spec
 
-	spec
-		baseline: 'JRPC'
-			with: [ spec
-				repository: 'github://ba-st-dependencies/JRPC:v{XX}/source';
-				loads: #('Deployment') ];
-		import: 'JRPC'.
+  spec
+    baseline: 'JRPC'
+      with: [ spec
+        repository: 'github://ba-st-dependencies/JRPC:v{XX}/source';
+        loads: #('Deployment') ];
+    import: 'JRPC'.
 ```
+
 > Replace `{XX}` with the version you want to depend on
 
 ```smalltalk
 baseline: spec
 
-	<baseline>
-	spec
-		for: #common
-		do: [ self setUpDependencies: spec.
-			spec package: 'My-Package' with: [ spec requires: #('JRPC') ] ]
+  <baseline>
+  spec
+    for: #common
+    do: [ self setUpDependencies: spec.
+      spec package: 'My-Package' with: [ spec requires: #('JRPC') ] ]
 ```
 
 ## Version management
@@ -54,6 +57,7 @@ When a release contains only bug fixes, the patch number increases. When the rel
 Thus, it should be safe to depend on a fixed major version and moving minor version of this project.
 
 ## Provided groups
+
 - `Server-Deployment` will load all the packages needed to deploy a JSON RPC Message Processor
 - `HTTP-Transport` will load all the packages needed to deploy an HTTP based JSON RPC Server
 - `TCP-Transport` will load all the packages needed to deploy a TCP based JSON RPC Server
