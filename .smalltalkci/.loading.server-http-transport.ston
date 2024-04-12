@@ -4,7 +4,8 @@ SmalltalkCISpec {
       #baseline : 'JRPC',
       #directory : '../source',
       #load : [ 'Server-HTTP-Transport' ],
-      #platforms : [  #pharo ]
+      #platforms : [  #pharo ],
+      #failOn : [ #Warning ]
     }
   ],
   #testing : {
