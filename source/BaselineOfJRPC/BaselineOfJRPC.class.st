@@ -40,7 +40,7 @@ BaselineOfJRPC >> setUpClientDeploymentPackages: spec [
 BaselineOfJRPC >> setUpDependencies: spec [
 
 	spec
-		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v7' ];
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v8' ];
 		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ]
 ]
 
